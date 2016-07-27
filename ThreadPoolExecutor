@@ -1,4 +1,5 @@
-java.util.concurrent.ThreadPoolExecutor.ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue, RejectedExecutionHandler handler)
+java.util.concurrent.ThreadPoolExecutor.ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, 
+TimeUnit unit, BlockingQueue<Runnable> workQueue, RejectedExecutionHandler handler)
 
 
 Creates a new ThreadPoolExecutor with the given initial parameters and default thread factory.
@@ -6,15 +7,18 @@ Creates a new ThreadPoolExecutor with the given initial parameters and default t
 Parameters:
 corePoolSize the number of threads to keep in the pool, even if they are idle, unless allowCoreThreadTimeOut is set
 maximumPoolSize the maximum number of threads to allow in the pool
-keepAliveTime when the number of threads is greater than the core, this is the maximum time that excess idle threads will wait for new tasks before terminating.
-unit the time unit for the keepAliveTime argument
-workQueue the queue to use for holding tasks before they are executed. This queue will hold only the Runnable tasks submitted by the execute method.
-handler the handler to use when execution is blocked because the thread bounds and queue capacities are reached
+keepAliveTime when the number of threads is greater than the core, this is the maximum time that excess idle threads will wait 
+for new tasks before terminating.unit the time unit for the keepAliveTime argument
+workQueue the queue to use for holding tasks before they are executed. This queue will hold only the Runnable tasks submitted 
+by the execute method.handler the handler to use when execution is blocked because the thread bounds and queue capacities 
+are reached
 
 
 
 main()方法相当于一个残忍的领导，他派发出许多任务，丢给一个叫 ThreadPoolExecutor的任劳任怨的小组来做。 
 这个小组里面队员至少有corePoolSize个人，如果他们两个忙不过来，任务就被放到任务列表workQueue里面。 
-如果积压的任务过多，多到任务列表workQueue都装不下(超过的初始个数)的时候，就雇佣新的队员来帮忙。但是基于成本的考虑，不能雇佣太多的队员，至多只能雇佣 maximumPoolSize个。 
-如果maximumPoolSize个队员都在忙时，再有新的任务，这个小组就处理不了了，任务就会被通过一种策略来处理，我们的处理方式是不停的派发，直到接受这个任务为止(更残忍！呵呵)。 
-因为队员工作是需要成本的，如果工作很闲，闲到 keepAliveTime TimeUnit都没有新的任务了，那么有的队员就会被解雇了，但是，为了小组的正常运转，即使工作再闲，小组的队员也不能少于corePoolSize个。
+如果积压的任务过多，多到任务列表workQueue都装不下(超过的初始个数)的时候，就雇佣新的队员来帮忙。但是基于成本的考虑，
+不能雇佣太多的队员，至多只能雇佣 maximumPoolSize个。 如果maximumPoolSize个队员都在忙时，再有新的任务，这个小组就处理不了了，
+任务就会被通过一种策略来处理，我们的处理方式是不停的派发，直到接受这个任务为止(更残忍！呵呵)。 
+因为队员工作是需要成本的，如果工作很闲，闲到 keepAliveTime TimeUnit都没有新的任务了，那么有的队员就会被解雇了，
+但是，为了小组的正常运转，即使工作再闲，小组的队员也不能少于corePoolSize个。
