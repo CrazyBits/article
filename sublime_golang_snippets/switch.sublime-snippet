@@ -1,0 +1,19 @@
+<snippet>
+
+<content><![CDATA[	
+switch ${1:con}} {
+case ${2:con}:
+	fmt.Println(${3})
+default:
+	fmt.Println(${4})
+}
+]]></content>
+
+
+
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>sw</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.go</scope>
+</snippet>
+
